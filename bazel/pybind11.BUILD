@@ -1,6 +1,8 @@
 # Description:
 #   Build rule for pybind11 2.2.4.
 
+load("@rules_cc//cc:defs.bzl", "cc_library")
+
 cc_library(
     name = "pybind11",
     hdrs = glob(

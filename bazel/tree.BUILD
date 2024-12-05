@@ -3,6 +3,8 @@
 #   The tree package used to support Bazel, but no longer does so.
 #   This BUILD file is adapted from the last official version.
 
+load("@rules_cc//cc:defs.bzl", "cc_library")
+
 cc_binary(
     name = "tree/_tree.so",
     srcs = [

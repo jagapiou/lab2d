@@ -18,6 +18,7 @@
 _BUILD_FILE = '''# Description:
 #   Build rule for Python.
 
+load("@rules_cc//cc:defs.bzl", "cc_library")
 load("@rules_python//python:defs.bzl", "py_runtime_pair")
 
 exports_files(["defs.bzl"])

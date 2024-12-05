@@ -1,6 +1,8 @@
 # Description:
 #   libpng is the official PNG reference library.
 
+load("@rules_cc//cc:defs.bzl", "cc_library")
+
 licenses(["notice"])  # BSD/MIT-like license
 
 genrule(

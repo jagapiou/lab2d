@@ -16,6 +16,8 @@
 """A BUILD rule for Python extensions that are defined via pybind11."""
 
 load("@bazel_skylib//lib:collections.bzl", "collections")
+load("@rules_cc//cc:defs.bzl", "cc_binary")
+load("@rules_python//python:defs.bzl", "py_binary", "py_library")
 
 def pybind_extension(
         name,
@@ -64,7 +66,7 @@ def pybind_extension(
             kwargs["visibility"] = visibility
 
     shared_lib_name = module_name + ".so"
-    native.cc_binary(
+    cc_binary(
         name = shared_lib_name,
         deps = collections.uniq(deps + pybind11_deps),
         copts = collections.uniq(copts + pybind11_copts),
@@ -75,7 +77,7 @@ def pybind_extension(
         **cc_kwargs
     )
 
-    return native.py_library(
+    return py_library(
         name = name,
         data = data + [module_name + ".so"],
         tags = tags,
@@ -83,7 +85,7 @@ def pybind_extension(
     )
 
 def pytype_strict_library(name, **kwargs):
-    native.py_library(name = name, **kwargs)
+    py_library(name = name, **kwargs)
 
 def pytype_strict_binary(name, **kwargs):
-    native.py_binary(name = name, **kwargs)
+    py_binary(name = name, **kwargs)
