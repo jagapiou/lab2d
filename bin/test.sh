@@ -1,0 +1,6 @@
+#!/bin/bash
+# CC=clang CXX=clang++ USE_BAZEL_VERSION=7.4.1 \
+# bazel --bazelrc=.bazelrc test --noenable_bzlmod --config=luajit --linkopt=-fuse-ld=lld  --test_output=errors //...
+CC=clang CXX=clang++ \
+bazel --bazelrc=.bazelrc test --config=luajit --linkopt=-fuse-ld=lld  --test_output=errors //...
+echo "SUCCESS"
